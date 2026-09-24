@@ -6,7 +6,7 @@ MIDDLE\_SENTINEL Unicode should survive intact: café, naïve, 日本語, and an
 
 ```python
 print("hello, extraction")
-total = 7
+print(7)
 ```
 
 | Sample | Result |

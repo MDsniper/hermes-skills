@@ -1,5 +1,5 @@
 {
-  "content": "ARTICLE\\_START\\_SENTINEL Reliable extraction begins with preserved evidence. This article contains enough ordinary prose to distinguish useful material from a navigation list. We compare source documents with their cleaned text rather than trusting a successful process exit.\n\n## Methods and observations\n\nMIDDLE\\_SENTINEL Unicode should survive intact: café, naïve, 日本語, and an em dash — without invented translation. The [reference guide](https://example.com/reference) is a relative link whose destination must stay attached to its label. A parser should retain actual observations and keep their wording unchanged.\n\n```python\nprint(\"hello, extraction\")\ntotal = 7\n```\n\n| Sample | Result |\n| --- | --- |\n| granite | stable |\n| clay | flexible |\n\nARTICLE\\_END\\_SENTINEL These findings conclude the document. Keeping the final paragraph matters because extraction can appear successful while silently dropping later sections. The fixture is not a live article and makes no factual claim about a particular website.",
+  "content": "ARTICLE\\_START\\_SENTINEL Reliable extraction begins with preserved evidence. This article contains enough ordinary prose to distinguish useful material from a navigation list. We compare source documents with their cleaned text rather than trusting a successful process exit.\n\n## Methods and observations\n\nMIDDLE\\_SENTINEL Unicode should survive intact: café, naïve, 日本語, and an em dash — without invented translation. The [reference guide](https://example.com/reference) is a relative link whose destination must stay attached to its label. A parser should retain actual observations and keep their wording unchanged.\n\n```python\nprint(\"hello, extraction\")\nprint(7)\n```\n\n| Sample | Result |\n| --- | --- |\n| granite | stable |\n| clay | flexible |\n\nARTICLE\\_END\\_SENTINEL These findings conclude the document. Keeping the final paragraph matters because extraction can appear successful while silently dropping later sections. The fixture is not a live article and makes no factual claim about a particular website.",
   "title": "Field Notes on Reliable Extraction",
   "description": "A reproducible article extraction fixture.",
   "domain": "example.com",
@@ -21,7 +21,7 @@
       "datePublished": "2026-09-24T08:00:00Z"
     }
   ],
-  "wordCount": 132,
+  "wordCount": 130,
   "parseTime": 22,
   "metaTags": [
     {
@@ -42,7 +42,7 @@
   ],
   "evidence": {
     "sourceUrl": "https://example.com/articles/test",
-    "inputSha256": "e852235d38c9cb417ce7d627b42ba99312aadde1c996c3971ea6f6f5f0bbb7ea",
+    "inputSha256": "24605a2ba6e48ae11ac12cf70a56152ffc0a8d5c780cb4f1b93a6529ef755d03",
     "runtime": "defuddle",
     "runtimeVersion": "0.19.4",
     "domVersion": "0.18.12",

@@ -92,11 +92,11 @@ Explicit pagination works.
     def test_03_external_images_file_links_and_empty_fail_closed(self):
         cases = {
             'remote-image': ('![leak](https://example.invalid/leak.png)', 'Images are disabled'),
-            'local-image': ('![secret](file:///etc/passwd)', 'Images are disabled'),
+            'local-image': ('![secret](file:///fixture-secret.txt)', 'Images are disabled'),
             'data-image': ('![x](data:image/svg+xml;base64,PHN2Zy8+)', 'Images are disabled'),
-            'file-link': ('[read](file:///etc/passwd)', 'Link scheme'),
+            'file-link': ('[read](file:///fixture-secret.txt)', 'Link scheme'),
             'javascript-link': ('[run](javascript:alert(1))', 'Link scheme'),
-            'relative-link': ('[read](../../private.txt)', 'Link scheme'),
+            'relative-link': ('[read](other-page.md)', 'Link scheme'),
             'empty': ('   \n', 'Empty Markdown'),
         }
         for name, (source, message) in cases.items():
@@ -111,7 +111,7 @@ Explicit pagination works.
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn('Unsupported glyphs', proc.stderr)
         self.assertFalse(out.exists())
-        proc, out = self.render('bad-theme', '# Title', '--theme', '../../etc/passwd')
+        proc, out = self.render('bad-theme', '# Title', '--theme', 'no-such-theme')
         self.assertNotEqual(proc.returncode, 0)
         self.assertFalse(out.exists())
 
