@@ -42,7 +42,7 @@
   ],
   "evidence": {
     "sourceUrl": "https://example.com/articles/test",
-    "inputSha256": "24605a2ba6e48ae11ac12cf70a56152ffc0a8d5c780cb4f1b93a6529ef755d03",
+    "inputSha256": "82708ffc9e5a8f1349eb8020f78c4ed72a6bd5dee895faf6f6226f89f10c77e3",
     "runtime": "defuddle",
     "runtimeVersion": "0.19.4",
     "domVersion": "0.18.12",
