@@ -17,7 +17,11 @@ def run_suite(fixture, output):
     assert fixture != Path.home() and fixture != Path('/'), 'Refuse broad root'
     assert {p.name for p in fixture.iterdir()} == {'math_ops.py', 'app.py', 'greeter.ts'}, 'Use only the supplied fixture'
     assert hashlib.sha256(BINARY.read_bytes()).hexdigest() == BINARY_SHA256, 'Pinned runtime changed'
-    env = {k: os.environ[k] for k in ('PATH', 'HOME', 'USER', 'LANG', 'TMPDIR') if k in os.environ}
+    env = {}
+    for key in ('PATH', 'HOME', 'USER', 'LANG', 'TMPDIR'):
+        value = os.getenv(key)
+        if value:
+            env[key] = value
     env.update(CBM_CACHE_DIR=str(BASE / 'cache'), CBM_RUNTIME_DIR=str(BASE / 'run'),
                CBM_ALLOWED_ROOT=str(fixture), CBM_WORKERS='2', CBM_MEM_BUDGET_MB='512')
     output.parent.mkdir(parents=True, exist_ok=True)

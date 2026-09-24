@@ -1,0 +1,22 @@
+[
+  {
+    "name": "article-content-and-metadata",
+    "status": "pass"
+  },
+  {
+    "name": "empty-is-not-success",
+    "status": "pass"
+  },
+  {
+    "name": "challenge-is-not-an-article",
+    "status": "pass"
+  },
+  {
+    "name": "reject-credentialed-or-nonhttps-source",
+    "status": "pass"
+  },
+  {
+    "name": "upstream-error-is-not-success",
+    "status": "pass"
+  }
+]

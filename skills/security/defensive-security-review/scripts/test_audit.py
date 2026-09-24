@@ -41,10 +41,18 @@ class AuditTests(unittest.TestCase):
         path.write_text(json.dumps(value), encoding='utf-8')
         return path
 
+    @staticmethod
+    def clean_env():
+        env = {'PATH': os.defpath, 'PYTHONDONTWRITEBYTECODE': '1'}
+        home = os.getenv('HOME')
+        if home:
+            env['HOME'] = home
+        return env
+
     def run_audit(self, kind, *names):
         return subprocess.run([sys.executable, '-B', '-c', GUARD, str(SCRIPT), '--root', str(self.root),
                                '--kind', kind, *names], capture_output=True, text=True,
-                              timeout=10, env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'})
+                              timeout=10, env=self.clean_env())
 
     def test_iam_wildcard_candidate_has_evidence(self):
         path = self.put('bad.json', {'Statement': [{'Effect': 'Allow', 'Action': '*',

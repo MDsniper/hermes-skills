@@ -132,7 +132,8 @@ def render(source, output, theme='default', lang='en'):
     css = font_css(source) + (ASSETS / 'base.css').read_text() + (ASSETS / 'themes' / (theme + '.css')).read_text()
     csp = "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
     document = '<!doctype html><html lang="' + html.escape(lang, quote=True) + '"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="' + html.escape(csp, quote=True) + '"><title>' + html.escape(output.stem) + '</title><style>' + css + '</style></head><body><main>' + body + '</main></body></html>'
-    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = str(HOME / 'browsers')
+    # C-level env for the Playwright child driver; keeps os.environ untouched.
+    os.putenv('PLAYWRIGHT_BROWSERS_PATH', str(HOME / 'browsers'))
     blocked = []
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True, chromium_sandbox=True)

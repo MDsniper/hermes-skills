@@ -1,0 +1,53 @@
+{
+  "content": "ARTICLE\\_START\\_SENTINEL Reliable extraction begins with preserved evidence. This article contains enough ordinary prose to distinguish useful material from a navigation list. We compare source documents with their cleaned text rather than trusting a successful process exit.\n\n## Methods and observations\n\nMIDDLE\\_SENTINEL Unicode should survive intact: café, naïve, 日本語, and an em dash — without invented translation. The [reference guide](https://example.com/reference) is a relative link whose destination must stay attached to its label. A parser should retain actual observations and keep their wording unchanged.\n\n```python\nprint(\"hello, extraction\")\ntotal = 7\n```\n\n| Sample | Result |\n| --- | --- |\n| granite | stable |\n| clay | flexible |\n\nARTICLE\\_END\\_SENTINEL These findings conclude the document. Keeping the final paragraph matters because extraction can appear successful while silently dropping later sections. The fixture is not a live article and makes no factual claim about a particular website.",
+  "title": "Field Notes on Reliable Extraction",
+  "description": "A reproducible article extraction fixture.",
+  "domain": "example.com",
+  "favicon": "https://example.com/favicon.ico",
+  "image": "",
+  "language": "en",
+  "published": "2026-09-24T08:00:00Z",
+  "author": "Ada Example",
+  "site": "Ada Example",
+  "schemaOrgData": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Field Notes on Reliable Extraction",
+      "author": {
+        "@type": "Person",
+        "name": "Ada Example"
+      },
+      "datePublished": "2026-09-24T08:00:00Z"
+    }
+  ],
+  "wordCount": 132,
+  "parseTime": 22,
+  "metaTags": [
+    {
+      "name": "author",
+      "property": null,
+      "content": "Ada Example"
+    },
+    {
+      "name": "description",
+      "property": null,
+      "content": "A reproducible article extraction fixture."
+    },
+    {
+      "name": null,
+      "property": "article:published_time",
+      "content": "2026-09-24T08:00:00Z"
+    }
+  ],
+  "evidence": {
+    "sourceUrl": "https://example.com/articles/test",
+    "inputSha256": "e852235d38c9cb417ce7d627b42ba99312aadde1c996c3971ea6f6f5f0bbb7ea",
+    "runtime": "defuddle",
+    "runtimeVersion": "0.19.4",
+    "domVersion": "0.18.12",
+    "useAsync": false,
+    "includeReplies": false,
+    "networkCalls": 0
+  }
+}

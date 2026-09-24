@@ -105,7 +105,11 @@ for args in [
 ytdlp = str(Path(sys.executable).parent / 'yt-dlp')
 url = 'https://www.youtube.com/watch?v=UF8uR6Z6KLc'
 argv = [ytdlp, '--ignore-config', '--no-plugin-dirs', '--no-cache-dir', '--no-playlist', '--skip-download', '--no-simulate', '--js-runtimes', 'node', '--socket-timeout', '15', '--retries', '0', '--extractor-retries', '0', '--write-subs', '--write-auto-subs', '--sub-langs', 'en', '--sub-format', 'vtt', '-o', str(OUT / '%(id)s.%(ext)s'), '--dump-single-json', '--', url]
-env = {k: os.environ[k] for k in ('PATH','HOME','TMPDIR','LANG') if k in os.environ}
+env = {}
+for _key in ('PATH', 'HOME', 'TMPDIR', 'LANG'):
+    _value = os.getenv(_key)
+    if _value:
+        env[_key] = _value
 row = dict(name='youtube', platform='YouTube', url=url, command=argv, credentials=False, retrieved_at=STAMP, status='failed', detail='')
 try:
     p = subprocess.run(argv, capture_output=True, text=True, timeout=90, env=env)
@@ -129,7 +133,12 @@ retain(row)
 # Authenticated gh public read is explicitly distinct from anonymous API success.
 if shutil.which('gh'):
     cmd = ['gh','repo','view','kepano/defuddle','--json','nameWithOwner,url,description,isPrivate']
-    env = dict(os.environ, GH_TELEMETRY='false', DO_NOT_TRACK='true', GH_NO_UPDATE_NOTIFIER='1')
+    env = {}
+    for _key in ('PATH', 'HOME', 'TMPDIR', 'LANG'):
+        _value = os.getenv(_key)
+        if _value:
+            env[_key] = _value
+    env.update(GH_TELEMETRY='false', DO_NOT_TRACK='true', GH_NO_UPDATE_NOTIFIER='1')
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=30, env=env)
         (OUT / 'github-cli.stdout').write_text(p.stdout)
