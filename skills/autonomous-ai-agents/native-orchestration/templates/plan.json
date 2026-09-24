@@ -1,0 +1,38 @@
+{
+  "workspace": "/absolute/path/to/project",
+  "tasks": [
+    {
+      "id": "inspect-api",
+      "goal": "Inspect API behavior and write an evidence-backed report",
+      "depends_on": [],
+      "reads": ["src/api"],
+      "writes": ["artifacts/api-review.md"],
+      "status": "pending",
+      "acceptance": ["Report cites exact source paths and the real test result"],
+      "constraints": ["No edits to source", "No external writes", "Wait for tests before returning"],
+      "evidence": []
+    },
+    {
+      "id": "inspect-docs",
+      "goal": "Check public docs against the contract and record gaps",
+      "depends_on": [],
+      "reads": ["docs"],
+      "writes": ["artifacts/docs-review.md"],
+      "status": "pending",
+      "acceptance": ["Every reported gap has a source location"],
+      "constraints": ["No edits to docs", "No external writes"],
+      "evidence": []
+    },
+    {
+      "id": "synthesize",
+      "goal": "Reconcile the verified reports",
+      "depends_on": ["inspect-api", "inspect-docs"],
+      "reads": ["artifacts/api-review.md", "artifacts/docs-review.md"],
+      "writes": ["artifacts/final.md"],
+      "status": "pending",
+      "acceptance": ["Final report reconciles both evidence sets and names unresolved gaps"],
+      "constraints": ["Parent checks evidence before accepting", "No external writes"],
+      "evidence": []
+    }
+  ]
+}

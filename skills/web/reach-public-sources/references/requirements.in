@@ -1,0 +1,3 @@
+# First-party public-only adaptation of Agent-Reach; no installer/cookie extras.
+yt-dlp[default]==2026.8.19
+feedparser==6.0.14

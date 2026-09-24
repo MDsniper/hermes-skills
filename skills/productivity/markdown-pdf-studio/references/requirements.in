@@ -1,0 +1,7 @@
+# Renderer and verification tools; no system/global Python installation.
+playwright==1.63.0
+markdown-it-py==4.2.0
+pypdf==6.19.0
+pypdfium2==5.13.0
+fonttools==4.66.0
+Pillow==12.3.0

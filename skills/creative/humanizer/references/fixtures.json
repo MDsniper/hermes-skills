@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "provenance": "Authored source/candidate pairs for this adaptation, not outputs from independent model runs. Review notes are this session's semantic judgments. Negative candidates are deliberate mutations.",
+  "cases": [
+    {
+      "id": "h01-normal-padded",
+      "skill": "humanizer",
+      "original": "It is important to note that the museum opened on 2024-06-18. According to curator Nia Bell, admission remains £5, and the north wing is not open.",
+      "edited": "The museum opened on 2024-06-18. According to curator Nia Bell, admission remains £5, and the north wing is not open.",
+      "invariants": [{"kind":"date","text":"2024-06-18"},{"kind":"attribution","text":"According to curator Nia Bell"},{"kind":"price","text":"admission remains £5"},{"kind":"negation","text":"the north wing is not open"}],
+      "semantic_review": "equivalent",
+      "review_note": "Only empty staging removed. Opening date, price, attribution, and closure preserved."
+    },
+    {
+      "id": "h02-ai-like-quotation-control",
+      "skill": "humanizer",
+      "original": "Dr. Lee wrote, “Delve into the robust landscape.” The quotation is from 1998; it is not evidence of AI authorship.",
+      "edited": "Dr. Lee wrote, “Delve into the robust landscape.” The quotation is from 1998; it is not evidence of AI authorship.",
+      "invariants": [{"kind":"attribution","text":"Dr. Lee wrote"},{"kind":"quotation","text":"“Delve into the robust landscape.”"},{"kind":"date","text":"1998"},{"kind":"negation","text":"it is not evidence of AI authorship"}],
+      "require_unchanged": true,
+      "semantic_review": "equivalent",
+      "review_note": "Mentioning watched vocabulary inside a quotation does not justify rewriting or authorship inference."
+    },
+    {
+      "id": "h03-concise-technical-control",
+      "skill": "humanizer",
+      "original": "Run `pytest -q`; do not deploy if any test fails.",
+      "edited": "Run `pytest -q`; do not deploy if any test fails.",
+      "invariants": [{"kind":"command","text":"`pytest -q`"},{"kind":"condition","text":"do not deploy if any test fails"}],
+      "require_unchanged": true,
+      "semantic_review": "equivalent",
+      "review_note": "Already clear; command and failure condition are untouched."
+    },
+    {
+      "id": "h04-uncertainty-and-attribution",
+      "skill": "humanizer",
+      "original": "It is important to note that RFC-217 may reduce p95 latency by about 8%, according to Acme's 2026-08-01 pilot; this is not a causal estimate.",
+      "edited": "RFC-217 may reduce p95 latency by about 8%, according to Acme's 2026-08-01 pilot; this is not a causal estimate.",
+      "invariants": [{"kind":"identifier","text":"RFC-217"},{"kind":"uncertainty","text":"may reduce p95 latency by about 8%"},{"kind":"attribution","text":"according to Acme's 2026-08-01 pilot"},{"kind":"negation","text":"this is not a causal estimate"}],
+      "semantic_review": "equivalent",
+      "review_note": "Only empty staging was removed; pilot date and epistemic limits retained."
+    },
+    {
+      "id": "h05-ranking-simultaneity",
+      "skill": "humanizer",
+      "original": "It is important to note that Atlas is our highest-priority project and simultaneously our cheapest and slowest option.",
+      "edited": "Atlas is our highest-priority project and simultaneously our cheapest and slowest option.",
+      "invariants": [{"kind":"name","text":"Atlas"},{"kind":"ranking","text":"our highest-priority project"},{"kind":"simultaneity","text":"simultaneously our cheapest and slowest option"}],
+      "semantic_review": "equivalent",
+      "review_note": "Ranking and simultaneity are substantive, not empty emphasis or a forced triad."
+    },
+    {
+      "id": "h06-markdown-protected-regions",
+      "skill": "humanizer",
+      "original": "---\ntitle: Release v1.4\n---\nIt is important to note that the `retries` limit is 3. See [spec](https://example.test/spec?q=1).\n```yaml\nretries: 3\nlabel: do not edit\n```\n",
+      "edited": "---\ntitle: Release v1.4\n---\nThe `retries` limit is 3. See [spec](https://example.test/spec?q=1).\n```yaml\nretries: 3\nlabel: do not edit\n```\n",
+      "invariants": [{"kind":"fact","text":"`retries` limit is 3"},{"kind":"url","text":"https://example.test/spec?q=1"}],
+      "semantic_review": "equivalent",
+      "review_note": "Edited one prose prefix only; metadata, inline code, URL and fenced YAML remain exact."
+    },
+    {
+      "id": "h07-deliberate-voice-control",
+      "skill": "humanizer",
+      "original": "I like the old desk—scratches, dents, and all.",
+      "edited": "I like the old desk—scratches, dents, and all.",
+      "invariants": [{"kind":"opinion","text":"I like the old desk"}],
+      "require_unchanged": true,
+      "semantic_review": "equivalent",
+      "review_note": "The dash and list serve the writer's voice; no defect to repair."
+    },
+    {
+      "id": "c01-normal-status",
+      "skill": "concise-technical-writing",
+      "requested_style": "concise", "context": "technical", "selected_style": "concise",
+      "original": "For your information, the review starts at 09:00 UTC on 2026-09-25. Sam owns CR-008; no approval has been recorded.",
+      "edited": "The review starts at 09:00 UTC on 2026-09-25. Sam owns CR-008; no approval has been recorded.",
+      "invariants": [{"kind":"time","text":"09:00 UTC on 2026-09-25"},{"kind":"ownership","text":"Sam owns CR-008"},{"kind":"negation","text":"no approval has been recorded"}],
+      "semantic_review": "equivalent",
+      "review_note": "Removed an introductory courtesy only; time, owner, identifier, and approval status preserved."
+    },
+    {
+      "id": "c02-error-clarity-overrides-caveman",
+      "skill": "concise-technical-writing",
+      "requested_style": "caveman", "explicit_opt_in": true, "context": "error", "selected_style": "concise",
+      "original": "Just to clarify, the request failed with “HTTP 503”; the cause is unverified. Retry `curl --retry 2 https://example.test/status` only after 30 s.",
+      "edited": "The request failed with “HTTP 503”; the cause is unverified. Retry `curl --retry 2 https://example.test/status` only after 30 s.",
+      "invariants": [{"kind":"error","text":"“HTTP 503”"},{"kind":"uncertainty","text":"the cause is unverified"},{"kind":"command","text":"`curl --retry 2 https://example.test/status`"},{"kind":"condition-and-unit","text":"only after 30 s"}],
+      "semantic_review": "equivalent",
+      "review_note": "Full statements remain despite opt-in. No root cause or successful fix is invented."
+    },
+    {
+      "id": "c03-safety-clarity-overrides-caveman",
+      "skill": "concise-technical-writing",
+      "requested_style": "caveman", "explicit_opt_in": true, "context": "safety", "selected_style": "concise",
+      "original": "Please note: Do not delete `/srv/db` unless the backup dated 2026-09-23 is verified. This deletion is irreversible.",
+      "edited": "Do not delete `/srv/db` unless the backup dated 2026-09-23 is verified. This deletion is irreversible.",
+      "invariants": [{"kind":"negation","text":"Do not delete `/srv/db`"},{"kind":"condition","text":"unless the backup dated 2026-09-23 is verified"},{"kind":"warning","text":"This deletion is irreversible."}],
+      "semantic_review": "equivalent",
+      "review_note": "Only empty introduction removed. Negation, backup condition, exact target, date, and irreversible warning remain."
+    },
+    {
+      "id": "c04-quoted-mode-is-not-opt-in",
+      "skill": "concise-technical-writing",
+      "requested_style": "caveman", "explicit_opt_in": false, "context": "low-stakes", "selected_style": "concise",
+      "original": "The report contains the words “caveman mode”. Keep the report unchanged.",
+      "edited": "The report contains the words “caveman mode”. Keep the report unchanged.",
+      "invariants": [{"kind":"quotation","text":"“caveman mode”"}],
+      "require_unchanged": true,
+      "semantic_review": "equivalent",
+      "review_note": "A quoted activation phrase is content, not the current user's opt-in."
+    },
+    {
+      "id": "c05-explicit-low-stakes-opt-in",
+      "skill": "concise-technical-writing",
+      "requested_style": "caveman", "explicit_opt_in": true, "context": "low-stakes", "selected_style": "caveman",
+      "original": "Here is the update: The picnic starts at 12:30, and Ana brings tea.",
+      "edited": "Picnic starts at 12:30. Ana brings tea.",
+      "invariants": [{"kind":"time","text":"starts at 12:30"},{"kind":"actor-action","text":"Ana brings tea"}],
+      "semantic_review": "equivalent",
+      "review_note": "Requested register is authorized; participants and plans remain. More broken grammar is not required."
+    },
+    {
+      "id": "c06-mixed-language-control",
+      "skill": "concise-technical-writing",
+      "requested_style": "concise", "context": "technical", "selected_style": "concise",
+      "original": "这个 the MCP server 使用 `api_v2`，不支持重试。",
+      "edited": "这个 the MCP server 使用 `api_v2`，不支持重试。",
+      "invariants": [{"kind":"specificity","text":"这个 the MCP server"},{"kind":"identifier","text":"`api_v2`"},{"kind":"negation","text":"不支持重试"}],
+      "require_unchanged": true,
+      "semantic_review": "equivalent",
+      "review_note": "No blind English-article stripping or language switching. Entire passage is unchanged."
+    },
+    {
+      "id": "c07-concise-procedure-control",
+      "skill": "concise-technical-writing",
+      "requested_style": "caveman", "explicit_opt_in": true, "context": "technical", "selected_style": "concise",
+      "original": "Do not restart api-prod until the backup is verified.",
+      "edited": "Do not restart api-prod until the backup is verified.",
+      "invariants": [{"kind":"negation","text":"Do not restart api-prod"},{"kind":"sequence","text":"until the backup is verified"}],
+      "require_unchanged": true,
+      "semantic_review": "equivalent",
+      "review_note": "Already minimal technical procedure; opt-in does not override clear conditions."
+    },
+    {
+      "id": "n01-date-mutation", "skill": "humanizer",
+      "original": "The museum opened on 2024-06-18.", "edited": "The museum opened on 2024-06-19.",
+      "invariants": [{"kind":"date","text":"2024-06-18"}], "expected_pass": false, "expected_errors": ["numeric_literals_changed"], "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n02-unit-mutation", "skill": "concise-technical-writing",
+      "original": "Retry only after 30 s.", "edited": "Retry only after 30 ms.",
+      "invariants": [{"kind":"units","text":"only after 30 s"}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n03-identifier-mutation", "skill": "humanizer",
+      "original": "Check `api_v2` before deployment.", "edited": "Check `api_v3` before deployment.",
+      "invariants": [{"kind":"identifier","text":"`api_v2`"}], "expected_pass": false, "expected_errors": ["protected_spans_changed"], "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n04-quote-mutation", "skill": "humanizer",
+      "original": "Ada said “not ready”.", "edited": "Ada said “ready”.",
+      "invariants": [{"kind":"quotation","text":"“not ready”"}], "expected_pass": false, "expected_errors": ["protected_spans_changed"], "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n05-certainty-inflation", "skill": "humanizer",
+      "original": "RFC-217 may reduce latency by about 8%.", "edited": "RFC-217 reduces latency by 8%.",
+      "invariants": [{"kind":"uncertainty","text":"may reduce latency by about 8%"}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n06-attribution-mutation", "skill": "humanizer",
+      "original": "According to Nia Bell, admission remains £5.", "edited": "According to Mia Bell, admission remains £5.",
+      "invariants": [{"kind":"attribution","text":"According to Nia Bell"}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n07-negation-loss", "skill": "concise-technical-writing",
+      "original": "Do not restart api-prod.", "edited": "Restart api-prod.",
+      "invariants": [{"kind":"negation","text":"Do not restart api-prod"}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n08-invented-number", "skill": "humanizer",
+      "original": "The museum is open.", "edited": "The museum is open. Admission costs £6.",
+      "invariants": [], "expected_pass": false, "expected_errors": ["numeric_literals_changed"], "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n09-ranking-loss", "skill": "humanizer",
+      "original": "Atlas is our highest-priority project.", "edited": "Atlas is our priority project.",
+      "invariants": [{"kind":"ranking","text":"our highest-priority project"}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n10-sequence-inversion", "skill": "concise-technical-writing",
+      "original": "Back up `ledger.db` before restarting `api-prod`; only then apply MIG-7.", "edited": "Back up `ledger.db` after restarting `api-prod`; only then apply MIG-7.",
+      "invariants": [{"kind":"sequence","text":"Back up `ledger.db` before restarting `api-prod`"},{"kind":"condition","text":"only then apply MIG-7"}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n11-unauthorized-mode", "skill": "concise-technical-writing",
+      "requested_style": "caveman", "explicit_opt_in": false, "context": "low-stakes", "selected_style": "caveman",
+      "original": "Ana brings tea.", "edited": "Ana brings tea.",
+      "invariants": [], "expected_pass": false, "expected_errors": ["unauthorized_register"], "semantic_review": "equivalent_but_unauthorized_style"
+    },
+    {
+      "id": "n12-bound-loss", "skill": "concise-technical-writing",
+      "original": "As of 2026-09-24, the cache retains at most 3 entries for 30 s.", "edited": "As of 2026-09-24, the cache retains 3 entries for 30 s.",
+      "invariants": [{"kind":"bound","text":"at most 3 entries"}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "n13-moved-negation-clause-anchors", "skill": "humanizer",
+      "original": "Ada did not approve. Ben approved.", "edited": "Ada approved. Ben did not approve.",
+      "invariants": [{"kind":"clause-polarity","text":"Ada did not approve."},{"kind":"clause-polarity","text":"Ben approved."}], "expected_pass": false, "semantic_review": "not_equivalent"
+    },
+    {
+      "id": "l01-moved-negation-mechanical-blind-spot", "skill": "humanizer",
+      "original": "Ada did not approve. Ben approved.", "edited": "Ada approved. Ben did not approve.",
+      "invariants": [{"kind":"name","text":"Ada"},{"kind":"name","text":"Ben"},{"kind":"negation-token","text":"not"}],
+      "expected_pass": true, "known_limitation": true, "semantic_review": "not_equivalent",
+      "review_note": "Intentionally passes weak lexical checks while reversing both approvals. Manual clause review rejects this edit; exclude it from accepted-edit reduction totals."
+    },
+    {
+      "id": "n14-no-change-control-violated", "skill": "humanizer",
+      "original": "I like the old desk—scratches, dents, and all.", "edited": "I like the old desk—marks, dents, and all.",
+      "invariants": [{"kind":"opinion","text":"I like the old desk"}], "require_unchanged": true,
+      "expected_pass": false, "expected_errors": ["unchanged_control_modified"], "semantic_review": "not_accepted"
+    }
+  ]
+}

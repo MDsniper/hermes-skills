@@ -1,0 +1,25 @@
+/* First-party layout; palette and theme concepts credit daymade (MIT). */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: Arial, 'StudioCJK', 'PingFang SC', 'Hiragino Sans', 'Apple SD Gothic Neo', sans-serif; font-size: 11pt; line-height: 1.55; color: #242424; overflow-wrap: anywhere; line-break: strict; }
+main { width: 100%; }
+h1 { font-size: 23pt; line-height: 1.25; margin: 0 0 0.7em; }
+h2 { font-size: 17pt; margin: 1.1em 0 0.5em; }
+h3 { font-size: 14pt; }
+h4, h5, h6 { font-size: 11.5pt; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+p { margin: 0.6em 0; orphans: 2; widows: 2; }
+ul, ol { padding-left: 1.7em; margin: 0.6em 0; }
+li { margin: 0.25em 0; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 0.8em 0; font-size: 10pt; }
+th, td { border: 1px solid var(--rule, #737373); padding: 6px 8px; text-align: left; vertical-align: top; white-space: normal; overflow-wrap: anywhere; word-break: normal; line-break: strict; }
+th { background: var(--wash, #f0f0f0); font-weight: 700; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+blockquote { margin: 0.8em 0; border-left: 3px solid var(--accent, #666); padding: 0.4em 1em; color: #595149; }
+code { font-family: Menlo, 'StudioCJK', monospace; font-size: 0.94em; background: var(--wash, #f4f4f4); padding: 0.1em 0.2em; white-space: break-spaces; overflow-wrap: anywhere; }
+pre { margin: 0.8em 0; padding: 10px 12px; border: 1px solid var(--rule, #999); background: var(--wash, #f4f4f4); white-space: pre-wrap; overflow-wrap: anywhere; break-inside: auto; }
+pre code { background: none; padding: 0; }
+a { color: var(--accent, #333); text-decoration: underline; }
+hr { border: 0; border-top: 1px solid var(--rule, #888); margin: 1em 0; }
+.pagebreak { break-before: page; height: 0; }

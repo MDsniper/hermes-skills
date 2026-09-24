@@ -1,0 +1,7 @@
+@page { size: A4; margin: 15mm; }
+main { width: 180mm; }
+body { --accent: #b65335; --rule: #c9a995; --wash: #faf1e9; color: #302720; }
+h1 { border-bottom: 2px solid #d97756; padding-bottom: 9px; }
+h2, h3 { color: #b65335; }
+table:has(tr:first-child > :nth-child(2):last-child) th:first-child { width: 44%; }
+table:has(tr:first-child > :nth-child(2):last-child) td:first-child { font-weight: 700; }

@@ -1,0 +1,6 @@
+@page { size: A4; margin: 18mm; }
+main { width: 174mm; }
+body { font-family: Georgia, 'StudioCJK', serif; font-size: 11.5pt; }
+h1 { text-align: center; font-size: 21pt; border-bottom: 1px solid #777; padding-bottom: 10px; }
+h1, h2, h3 { font-family: Arial, 'StudioCJK', sans-serif; }
+table { table-layout: auto; }

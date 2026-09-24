@@ -1,0 +1,6 @@
+@page { size: 148mm 210mm; margin: 10mm; }
+main { width: 128mm; }
+body { --accent: #b65335; --rule: #c9a995; --wash: #faf1e9; color: #302720; font-size: 11.5pt; line-height: 1.7; }
+h1 { font-size: 21pt; border-bottom: 2px solid #d97756; padding-bottom: 9px; }
+h2, h3 { color: #b65335; }
+table { font-size: 10.5pt; }
