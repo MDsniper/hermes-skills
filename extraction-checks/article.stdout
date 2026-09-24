@@ -22,7 +22,7 @@
     }
   ],
   "wordCount": 130,
-  "parseTime": 22,
+  "parseTime": 23,
   "metaTags": [
     {
       "name": "author",
@@ -42,7 +42,7 @@
   ],
   "evidence": {
     "sourceUrl": "https://example.com/articles/test",
-    "inputSha256": "82708ffc9e5a8f1349eb8020f78c4ed72a6bd5dee895faf6f6226f89f10c77e3",
+    "inputSha256": "417892ced01c01e8f627b825cdc852898bc3d2674dc3439379b3f74ae4efbb77",
     "runtime": "defuddle",
     "runtimeVersion": "0.19.4",
     "domVersion": "0.18.12",
