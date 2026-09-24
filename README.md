@@ -21,6 +21,8 @@ hermes skills install MDsniper/hermes-skills/skills/security/defensive-security-
 
 Verify after installing: `hermes skills inspect <name>`, then run the skill's `scripts/test_*.py`.
 
+All ten were verified end-to-end against a fresh Hermes v0.21.4 home on 2026-09-24: every install resolves from GitHub and passes the built-in security scan with verdict SAFE — no `--force` needed anywhere.
+
 ## The skills
 
 | Skill | What it does | Runtime needs |
